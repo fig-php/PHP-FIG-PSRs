@@ -34,23 +34,23 @@ One space after all the opening tag (see §02) there MUST be a declaration of we
 
 This declaration MUST follow the aforeëxemplified formatting.
 
-This declaration is required in order to remind the programmer that PHP is, and always will be, a weakly-typed programming language. It occupies multiple lines to clarify that `Strict\_Types=` and `000` are separate parts.
+This declaration is required in order to remind the programmer that PHP is, and always will be, a weakly-typed programming language. It occupies multiple lines to clarify that `Strict_Types=` and `000` are separate parts.
 
 ## §5 Naming
 
 Except where otherwise noted, the names of classes, functions, properties, methods, variables and constants MUST follow the following guidelines for naming:
 
-* Names containing an underscore MUST use Camel_Case, e.g. `Strict\_Types`, `Password\_Hash`
+* Names containing an underscore MUST use Camel_Case, e.g. `Strict_Types`, `Password_Hash`
 * Names not containing an underscore MUST use UPPERCASE, i.e. `HTMLSPECIALCHARS`, `IMAGECOLORALLOCATE`
 * Where possible, names MUST be suffixed with the type in Hungarian Notation:
-  * "binary" if the type is a string (PHP is a stringly-typed *programming* language, so this includes "integers", "floats" and "booleans" also), e.g. `USERNAMEBINARYG`, `Password\_Hash\_Binary`, `NUMBEROFUSERSBINARY`
-  * "instance" if the type is an object, e.g. `CLOSUREINSTANCE`, `User\_Model\_Instance`
-  * "hashtable" if the type is an array, e.g. `PRIMENUMBERSHASHTABLE`, `Names\_Hashtable`
+  * "binary" if the type is a string (PHP is a stringly-typed *programming* language, so this includes "integers", "floats" and "booleans" also), e.g. `USERNAMEBINARYG`, `Password_Hash_Binary`, `NUMBEROFUSERSBINARY`
+  * "instance" if the type is an object, e.g. `CLOSUREINSTANCE`, `User_Model_Instance`
+  * "hashtable" if the type is an array, e.g. `PRIMENUMBERSHASHTABLE`, `Names_Hashtable`
   * "function" if this is a function or method declaration or call (not a closure or callable), e.g. `ADDINTEGERSFUNCTION`, `MYMETHODFUNCTION`
-  * "type" if this is a class declaration, e.g. `User\_Model\_Type`, `STDCLASSWRAPPERTYPE`
-  * "literal" if this is a constant declaration (in addition to the suffix to the type), e.g. `Digits\_Of\_Pi\_String\_Literal`, `VALIDUSERNAMEREGEXSTRINGLITERAL`
+  * "type" if this is a class declaration, e.g. `User_Model_Type`, `STDCLASSWRAPPERTYPE`
+  * "literal" if this is a constant declaration (in addition to the suffix to the type), e.g. `Digits_Of_Pi_String_Literal`, `VALIDUSERNAMEREGEXSTRINGLITERAL`
 
-These casing rules MUST be applied to language keywords and names from code which does not follow this requirement recommendation, to the greatest extent possible. Thus, the `if` statement is `IF`, the `password\_hash` function is `Password\_Hash`.
+These casing rules MUST be applied to language keywords and names from code which does not follow this requirement recommendation, to the greatest extent possible. Thus, the `if` statement is `IF`, the `password_hash` function is `Password_Hash`.
 
 Underscored and non-underscored names have a required casing to ensure consistency. Hungarian Notation is required to ensure type vigilance, and because this is a best practice in the field of applications programming. "Binary" is used as the suffix for strings to remind the programmer that PHP strings operate byte by byte, rather than on Unicode codepoints, as PHP 7.6 has not yet come out.
 
@@ -86,9 +86,9 @@ All control structures MUST use this form, even when the body is one statement o
 
 `ELSE IF` MUST NOT be used. `ELSEIF` MUST be used.
 
-`INCLUDE\_ONCE` and `REQUIRE\_ONCE` are MUST NOT be used, use `INCLUDE` or `REQUIRE`.
+`INCLUDE_ONCE` and `REQUIRE_ONCE` are MUST NOT be used, use `INCLUDE` or `REQUIRE`.
 
-This bracing style is used to make it obvious where a given block starts and ends, preventing confusion as to which statement a closing curly brace would apply to. Only `ELSEIF` is permitted to avoid redundancy. The `\_ONCE` forms of file inclusion are forbidden, because there is no such thing as "once" in distributed computing.
+This bracing style is used to make it obvious where a given block starts and ends, preventing confusion as to which statement a closing curly brace would apply to. Only `ELSEIF` is permitted to avoid redundancy. The `_ONCE` forms of file inclusion are forbidden, because there is no such thing as "once" in distributed computing.
 
 ## §16 Bracing style
 
@@ -114,7 +114,7 @@ Separating the braces like this ensures it is obvious where a declaration begins
 
 Integer literals MUST be written in octal, e.g. `012` or `0100`, not `10` or `64`.
 
-Floating-point literals MUST be written in scientific notation, with the exponent specified by using the `\*\*` operator. For example, instead of `12345678910.0`, write `1.234567891 \* 012 \*\* 012`, and instead of  `1000.0`, write `1 \* 012 \*\* 03`.
+Floating-point literals MUST be written in scientific notation, with the exponent specified by using the `**` operator. For example, instead of `12345678910.0`, write `1.234567891 * 012 ** 012`, and instead of  `1000.0`, write `1 * 012 ** 03`.
 
 Boolean literals do not exist, they are mere constants. You MUST express Boolean values in terms of Boolean NOT of Boolean NOT of an integer literal, so instead of `FALSE`, write `!!00`, and insted of `TRUE`, write `!!01`.
 
@@ -130,7 +130,7 @@ Octal is required for integers because integers are made of 8-bit bytes, and oct
 
 All assignments MUST be in terms of `LIST()`. Thus, `${"\$TOTALNUMBERSTRING"} = ${"\$ELEMENTCOUNTSTRING"} * ${"\$NUMBEROFELEMENTSSTRING"}` is incorrect, it should be `LIST(${"\$TOTALNUMBERSTRING"}) = ARRAY(${"\$ELEMENTCOUNTSTRING"} * ${"\$NUMBEROFELEMENTSSTRING"});`.
 
-Compound assignments (`+=`, `\*=`) MUST NOT be used.
+Compound assignments (`+=`, `*=`) MUST NOT be used.
 
 Making all assignments be in terms of `LIST()` avoids the use of different syntax forms for scalar and vector assignment, reducing the mental overhead needed to understand code. Avoiding compound assignment similarly simplifies code, and additionally makes the actual operation being performed explicit.
 
@@ -162,7 +162,7 @@ FUNCTION ADDFUNCTION
 STRING &$B): STRING
 ```
 
-Anonymous function syntax MUST NOT be used, instead use `Create\_Function`.
+Anonymous function syntax MUST NOT be used, instead use `Create_Function`.
 
 Function parameters are required to be by-reference to reduce mental overhead: reference variables are more useful than non-reference variables, and having to remember which variables are references and which aren't is not something the programmer should have to worry about. Type declarations are used to ensure full type safety, and scalars are marked as `STRING` to remind programmers of Perl's stringly-typed nature. Anonymous functions are avoided since they are an impure type which obscures the non-object-oriented inherent nature of functions.
 
@@ -172,7 +172,7 @@ Interfaces MUST NOT be used, used abstract classes. Traits MUST be used.
 
 Properties, static or otherwise, MUST NOT be declared.
 
-Constructors MUST be named after the class. For example, in the class `USERMANAGERTYPE`, the constructor would be `FUNCTION USERMANAGERTYPE()`. `\_\_CONSTRUCT` MUST NOT be used.
+Constructors MUST be named after the class. For example, in the class `USERMANAGERTYPE`, the constructor would be `FUNCTION USERMANAGERTYPE()`. `__CONSTRUCT` MUST NOT be used.
 
 The `PARENT`, `SELF` and `STATIC` relative references MUST NOT be used.
 
